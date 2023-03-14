@@ -1,14 +1,16 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery } from '@apollo/client';
 
 import ReviewForm from "../components/ReviewForm";
 
-import { QUERY_THOUGHTS } from "../utils/queries";
+import { QUERY_THOUGHTS } from '../utils/queries';
+
+
+
 
 const Home = () => {
-  // const { loading, data } = useQuery(QUERY_THOUGHTS);
-  // const thoughts = data?.thoughts || [];
+  const { loading, data } = useQuery(QUERY_THOUGHTS);
+  const thoughts = data?.thoughts || [];
 
   return (
     <main>
@@ -17,6 +19,8 @@ const Home = () => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: "1px dotted #1a1a1a" }}
         >
+            {/* {loading ? (
+            <div>Loading...</div> */}
           <ReviewForm />
         </div>
         <div
@@ -25,17 +29,6 @@ const Home = () => {
         >
           Checkout Our Reviews <a href="/reviews">Here</a>
         </div>
-
-        {/* <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ReviewList
-              thoughts={thoughts}
-              title="Checkout Our Reviews..."
-            />
-          )}
-        </div> */}
       </div>
     </main>
   );
